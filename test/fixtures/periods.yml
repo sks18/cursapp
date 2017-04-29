@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dateofentrance: 2017-04-29
+  reasonofentrance: MyText
+  dateofissue: 2017-04-29
+  dischargesummary: MyText
+  card_id: 
+  ward_id: 
+
+two:
+  dateofentrance: 2017-04-29
+  reasonofentrance: MyText
+  dateofissue: 2017-04-29
+  dischargesummary: MyText
+  card_id: 
+  ward_id: 

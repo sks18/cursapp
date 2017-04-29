@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lastname: MyText
+  firstname: MyText
+  secondname: MyText
+  nomer: 1
+  insurancepolicy: 1
+  typeoftreatment: MyText
+  dateofcreation: 2017-04-29
+  pindex: 1
+  city: MyText
+  street: MyText
+  house: MyText
+  building: MyText
+  flat: MyText
+  telephone: MyText
+  passportseries: 1
+  passportnumber: 1
+  passsportfrom: MyText
+  passportwhen: 2017-04-29
+  allergy: MyText
+
+two:
+  lastname: MyText
+  firstname: MyText
+  secondname: MyText
+  nomer: 1
+  insurancepolicy: 1
+  typeoftreatment: MyText
+  dateofcreation: 2017-04-29
+  pindex: 1
+  city: MyText
+  street: MyText
+  house: MyText
+  building: MyText
+  flat: MyText
+  telephone: MyText
+  passportseries: 1
+  passportnumber: 1
+  passsportfrom: MyText
+  passportwhen: 2017-04-29
+  allergy: MyText

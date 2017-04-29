@@ -1,0 +1,2 @@
+json.extract! card, :id, :lastname, :firstname, :secondname, :nomer, :insurancepolicy, :typeoftreatment, :dateofcreation, :pindex, :city, :street, :house, :building, :flat, :telephone, :passportseries, :passportnumber, :passsportfrom, :passportwhen, :allergy, :created_at, :updated_at
+json.url card_url(card, format: :json)

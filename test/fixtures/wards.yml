@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  floor: 1
+  nomer: 1
+  otdel: MyText
+  capacity: 1
+
+two:
+  floor: 1
+  nomer: 1
+  otdel: MyText
+  capacity: 1

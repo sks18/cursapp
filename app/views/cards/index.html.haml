@@ -1,0 +1,57 @@
+%h1 Listing cards
+
+%table
+  %thead
+    %tr
+      %th Lastname
+      %th Firstname
+      %th Secondname
+      %th Nomer
+      %th Insurancepolicy
+      %th Typeoftreatment
+      %th Dateofcreation
+      %th Pindex
+      %th City
+      %th Street
+      %th House
+      %th Building
+      %th Flat
+      %th Telephone
+      %th Passportseries
+      %th Passportnumber
+      %th Passsportfrom
+      %th Passportwhen
+      %th Allergy
+      %th
+      %th
+      %th
+
+  %tbody
+    - @cards.each do |card|
+      %tr
+        %td= card.lastname
+        %td= card.firstname
+        %td= card.secondname
+        %td= card.nomer
+        %td= card.insurancepolicy
+        %td= card.typeoftreatment
+        %td= card.dateofcreation
+        %td= card.pindex
+        %td= card.city
+        %td= card.street
+        %td= card.house
+        %td= card.building
+        %td= card.flat
+        %td= card.telephone
+        %td= card.passportseries
+        %td= card.passportnumber
+        %td= card.passsportfrom
+        %td= card.passportwhen
+        %td= card.allergy
+        %td= link_to 'Show', card
+        %td= link_to 'Edit', edit_card_path(card)
+        %td= link_to 'Destroy', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Card', new_card_path

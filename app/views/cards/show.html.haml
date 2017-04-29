@@ -1,0 +1,63 @@
+%p#notice= notice
+
+%p
+  %b Lastname:
+  = @card.lastname
+%p
+  %b Firstname:
+  = @card.firstname
+%p
+  %b Secondname:
+  = @card.secondname
+%p
+  %b Nomer:
+  = @card.nomer
+%p
+  %b Insurancepolicy:
+  = @card.insurancepolicy
+%p
+  %b Typeoftreatment:
+  = @card.typeoftreatment
+%p
+  %b Dateofcreation:
+  = @card.dateofcreation
+%p
+  %b Pindex:
+  = @card.pindex
+%p
+  %b City:
+  = @card.city
+%p
+  %b Street:
+  = @card.street
+%p
+  %b House:
+  = @card.house
+%p
+  %b Building:
+  = @card.building
+%p
+  %b Flat:
+  = @card.flat
+%p
+  %b Telephone:
+  = @card.telephone
+%p
+  %b Passportseries:
+  = @card.passportseries
+%p
+  %b Passportnumber:
+  = @card.passportnumber
+%p
+  %b Passsportfrom:
+  = @card.passsportfrom
+%p
+  %b Passportwhen:
+  = @card.passportwhen
+%p
+  %b Allergy:
+  = @card.allergy
+
+= link_to 'Edit', edit_card_path(@card)
+\|
+= link_to 'Back', cards_path

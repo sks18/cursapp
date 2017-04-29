@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Floor:
+  = @ward.floor
+%p
+  %b Nomer:
+  = @ward.nomer
+%p
+  %b Otdel:
+  = @ward.otdel
+%p
+  %b Capacity:
+  = @ward.capacity
+
+= link_to 'Edit', edit_ward_path(@ward)
+\|
+= link_to 'Back', wards_path

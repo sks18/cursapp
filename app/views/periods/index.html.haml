@@ -1,0 +1,31 @@
+%h1 Listing periods
+
+%table
+  %thead
+    %tr
+      %th Dateofentrance
+      %th Reasonofentrance
+      %th Dateofissue
+      %th Dischargesummary
+      %th Card
+      %th Ward
+      %th
+      %th
+      %th
+
+  %tbody
+    - @periods.each do |period|
+      %tr
+        %td= period.dateofentrance
+        %td= period.reasonofentrance
+        %td= period.dateofissue
+        %td= period.dischargesummary
+        %td= period.card
+        %td= period.ward
+        %td= link_to 'Show', period
+        %td= link_to 'Edit', edit_period_path(period)
+        %td= link_to 'Destroy', period, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Period', new_period_path

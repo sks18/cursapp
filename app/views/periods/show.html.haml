@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Dateofentrance:
+  = @period.dateofentrance
+%p
+  %b Reasonofentrance:
+  = @period.reasonofentrance
+%p
+  %b Dateofissue:
+  = @period.dateofissue
+%p
+  %b Dischargesummary:
+  = @period.dischargesummary
+%p
+  %b Card:
+  = @period.card
+%p
+  %b Ward:
+  = @period.ward
+
+= link_to 'Edit', edit_period_path(@period)
+\|
+= link_to 'Back', periods_path
