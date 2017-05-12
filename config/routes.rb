@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :periods
-  resources :wards
-  resources :cards
   resources :role_users
   resources :roles
   resources :password_resets
