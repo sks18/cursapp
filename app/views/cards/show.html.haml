@@ -1,63 +1,73 @@
+=breadcrumb_tag do
+  %li
+    = link_to 'Список карт', cards_path
+  %li.active
+    = t('headers.cards.show')
 %p#notice= notice
 
-%p
-  %b Lastname:
-  = @card.lastname
-%p
-  %b Firstname:
-  = @card.firstname
-%p
-  %b Secondname:
-  = @card.secondname
-%p
-  %b Nomer:
-  = @card.nomer
-%p
-  %b Insurancepolicy:
-  = @card.insurancepolicy
-%p
-  %b Typeoftreatment:
-  = @card.typeoftreatment
-%p
-  %b Dateofcreation:
-  = @card.dateofcreation
-%p
-  %b Pindex:
-  = @card.pindex
-%p
-  %b City:
-  = @card.city
-%p
-  %b Street:
-  = @card.street
-%p
-  %b House:
-  = @card.house
-%p
-  %b Building:
-  = @card.building
-%p
-  %b Flat:
-  = @card.flat
-%p
-  %b Telephone:
-  = @card.telephone
-%p
-  %b Passportseries:
-  = @card.passportseries
-%p
-  %b Passportnumber:
-  = @card.passportnumber
-%p
-  %b Passsportfrom:
-  = @card.passsportfrom
-%p
-  %b Passportwhen:
-  = @card.passportwhen
-%p
-  %b Allergy:
-  = @card.allergy
 
-= link_to 'Edit', edit_card_path(@card)
-\|
-= link_to 'Back', cards_path
+
+%dl
+  %dt= Card.human_attribute_name(:lastname)
+  %dd= @card.lastname
+  
+  %dt= Card.human_attribute_name(:firstname)
+  %dd= @card.firstname
+  
+  %dt= Card.human_attribute_name(:secondname)
+  %dd= @card.secondname
+
+  %dt= Card.human_attribute_name(:nomer)
+  %dd= @card.nomer
+
+  %dt= Card.human_attribute_name(:insurancepolicy)
+  %dd= @card.insurancepolicy
+  
+  %dt= Card.human_attribute_name(:typeoftreatment)
+  %dd= @card.typeoftreatment
+  
+  %dt= Card.human_attribute_name(:dateofcreation)
+  %dd= @card.dateofcreation
+  
+  %dt= Card.human_attribute_name(:pindex)
+  %dd= @card.pindex
+
+  %dt= Card.human_attribute_name(:city)
+  %dd= @card.city
+ 
+  %dt= Card.human_attribute_name(:street)
+  %dd= @card.street
+  
+  %dt= Card.human_attribute_name(:house)
+  %dd= @card.house
+  
+  %dt= Card.human_attribute_name(:building)
+  %dd= @card.building
+
+  %dt= Card.human_attribute_name(:flat)
+  %dd= @card.flat
+  
+  %dt= Card.human_attribute_name(:telephone)
+  %dd= @card.telephone
+  
+  %dt= Card.human_attribute_name(:passportseries)
+  %dd= @card.passportseries
+  
+  %dt= Card.human_attribute_name(:passportnumber)
+  %dd= @card.passportnumber
+
+  %dt= Card.human_attribute_name(:passsportfrom)
+  %dd= @card.passsportfrom
+
+  %dt= Card.human_attribute_name(:passportwhen)
+  %dd= @card.passportwhen
+  
+  %dt= Card.human_attribute_name(:allergy)
+  %dd= @card.allergy
+
+  
+
+= link_to 'Назад', cards_path, class: 'btn btn-primary'
+-if is_admin? || is_operator?
+  \|
+  = link_to 'Редактировать', edit_card_path(@card), class: 'btn btn-primary'

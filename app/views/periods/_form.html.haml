@@ -1,28 +1,44 @@
 = form_for @period do |f|
-  - if @period.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@period.errors.count, "error")} prohibited this period from being saved:"
-      %ul
-        - @period.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :dateofentrance
-    = f.date_select :dateofentrance
-  .field
-    = f.label :reasonofentrance
-    = f.text_area :reasonofentrance
-  .field
-    = f.label :dateofissue
-    = f.date_select :dateofissue
-  .field
-    = f.label :dischargesummary
-    = f.text_area :dischargesummary
-  .field
-    = f.label :card_id
-    = f.text_field :card_id
-  .field
-    = f.label :ward_id
-    = f.text_field :ward_id
-  .actions
-    = f.submit 'Save'
+  = error_messages_for @period
+  .row
+    .col-md-6
+      .form-group
+        = f.label :dateofentrance
+        .input-group.date.datepicker
+          = f.text_field(:dateofentrance, value: lnil(f.object.dateofentrance),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+    .col-md-6
+      .form-group
+        = f.label :reasonofentrance
+        = f.text_area :reasonofentrance, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :dateofissue
+        .input-group.date.datepicker
+          = f.text_field(:dateofissue, value: lnil(f.object.dateofissue),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+    .col-md-6
+      .form-group
+        = f.label :dischargesummary
+        = f.text_area :dischargesummary, class: 'form-control'
+    .row
+    .col-md-6
+      .form-group
+        = f.label :ward_id, {id: 'ward_label'}
+        = f.select :ward_id, Ward.all.map{|x| [x.nomer, x.id]},{include_blank: true},  {class: 'form-control', id: 'ward_select'}
+        = f.error_messages_for(:ward_id)
+ 
+    .col-md-6
+      .form-group
+        = f.label :card_id, {id: 'card_label'}
+        = f.select :card_id, Card.all.map{|x| [x.nomer, x.id]},{include_blank: true},  {class: 'form-control', id: 'card_select'}
+        = f.error_messages_for(:card_id)
+     
+       
+  
+  .actions.margin-small-top
+    = f.submit nil, class: 'btn btn-primary'

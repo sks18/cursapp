@@ -1,67 +1,90 @@
 = form_for @card do |f|
-  - if @card.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@card.errors.count, "error")} prohibited this card from being saved:"
-      %ul
-        - @card.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :lastname
-    = f.text_area :lastname
-  .field
-    = f.label :firstname
-    = f.text_area :firstname
-  .field
-    = f.label :secondname
-    = f.text_area :secondname
-  .field
-    = f.label :nomer
-    = f.number_field :nomer
-  .field
-    = f.label :insurancepolicy
-    = f.number_field :insurancepolicy
-  .field
-    = f.label :typeoftreatment
-    = f.text_area :typeoftreatment
-  .field
-    = f.label :dateofcreation
-    = f.date_select :dateofcreation
-  .field
-    = f.label :pindex
-    = f.number_field :pindex
-  .field
-    = f.label :city
-    = f.text_area :city
-  .field
-    = f.label :street
-    = f.text_area :street
-  .field
-    = f.label :house
-    = f.text_area :house
-  .field
-    = f.label :building
-    = f.text_area :building
-  .field
-    = f.label :flat
-    = f.text_area :flat
-  .field
-    = f.label :telephone
-    = f.text_area :telephone
-  .field
-    = f.label :passportseries
-    = f.number_field :passportseries
-  .field
-    = f.label :passportnumber
-    = f.number_field :passportnumber
-  .field
-    = f.label :passsportfrom
-    = f.text_area :passsportfrom
-  .field
-    = f.label :passportwhen
-    = f.date_select :passportwhen
-  .field
-    = f.label :allergy
-    = f.text_area :allergy
-  .actions
-    = f.submit 'Save'
+  = error_messages_for @card
+  .row
+    .col-md-6
+      .form-group
+        = f.label :lastname
+        = f.text_area :lastname, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :firstname
+        = f.text_area :firstname, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :secondname
+        = f.text_area :secondname, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :nomer
+        = f.text_area :nomer, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :insurancepolicy
+        = f.text_area :insurancepolicy, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :typeoftreatment
+        = f.select :typeoftreatment, options_for_select(["Платно", "Бесплатно"]), class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :dateofcreation
+        .input-group.date.datepicker
+          = f.text_field(:dateofcreation, value: lnil(f.object.dateofcreation),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+    .col-md-6
+      .form-group
+        = f.label :pindex
+        = f.text_area :pindex, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :city
+        = f.text_area :city, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :street
+        = f.text_area :street, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :house
+        = f.text_area :house, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :building
+        = f.text_area :building, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :flat
+        = f.text_area :flat, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :telephone
+        = f.text_area :telephone, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :passportseries
+        = f.text_area :passportseries, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :passportnumber
+        = f.text_area :passportnumber, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :passsportfrom
+        = f.text_area :passsportfrom, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :passportwhen
+        .input-group.date.datepicker
+          = f.text_field(:passportwhen, value: lnil(f.object.passportwhen),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+    .col-md-6
+      .form-group
+        = f.label :allergy
+        = f.text_area :allergy, class: 'form-control'
+  
+  .actions.margin-small-top
+    = f.submit nil, class: 'btn btn-primary'

@@ -4,7 +4,7 @@ class CreateCards < ActiveRecord::Migration
       t.text :lastname, null: false
       t.text :firstname, null: false
       t.text :secondname
-      t.integer :nomer
+      t.integer :nomer, unique: true, null: false
       t.integer :insurancepolicy, unique: true
       t.text :typeoftreatment, null: false
       t.date :dateofcreation, null: false

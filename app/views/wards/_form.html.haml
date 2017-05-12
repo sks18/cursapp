@@ -1,22 +1,22 @@
 = form_for @ward do |f|
-  - if @ward.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ward.errors.count, "error")} prohibited this ward from being saved:"
-      %ul
-        - @ward.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :floor
-    = f.number_field :floor
-  .field
-    = f.label :nomer
-    = f.number_field :nomer
-  .field
-    = f.label :otdel
-    = f.text_area :otdel
-  .field
-    = f.label :capacity
-    = f.number_field :capacity
-  .actions
-    = f.submit 'Save'
+  = error_messages_for @ward
+  .row
+    .col-md-6
+      .form-group
+        = f.label :floor
+        = f.text_area :floor, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :nomer
+        = f.text_area :nomer, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :otdel
+        = f.text_area :otdel, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :capacity
+        = f.text_area :capacity, class: 'form-control'
+  
+  .actions.margin-small-top
+    = f.submit nil, class: 'btn btn-primary'

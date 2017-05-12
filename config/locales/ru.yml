@@ -16,9 +16,15 @@ ru:
     confirm:
       user: Действительно удалить пользователя?
       role: Действительно удалить роль?
+      ward: Действительно удалить палату?
+      card: Действительно удалить карту?
+      period: Действительно удалить амбулаторный период?
     new: 
       user: Новый пользователь
       role: Новая роль
+      ward: Новая палата
+      card: Новая карта
+      period: Новый амбулаторный период
   headers:
     users:
       edit: Редактирование пользователя
@@ -28,6 +34,21 @@ ru:
       index: Список возможных ролей пользователей
       edit: Редактирование роли
       new: Новая роль
+    wards:
+      edit: Редактирование палат
+      new: Новая палата
+      index: Список палат
+      show: Просмотр палаты
+    cards:
+      edit: Редактирование карт
+      new: Новая карта
+      index: Список карт
+      show: Просмотр карты
+    periods:
+      edit: Редактирование амб.периодов
+      new: Новый амб.период
+      index: Список амб.периодов
+      show: Просмотр амб.периода
   views:
     pagination:
       first: ⇤
@@ -38,6 +59,9 @@ ru:
   activerecord:
     models:
       user: Пользователь
+      card: Мелицинская карта
+      period: Амбулаторный период
+      ward: Больничная палата
     attributes:
       user:
         email: Пользовательское имя/электронная почта
@@ -53,6 +77,38 @@ ru:
         name: Обозначение
         info: Краткое название
         full_info: Описание
+      card:
+        lastname: Фамилия
+        firstname: Имя
+        secondname: Отчество
+        nomer: Номер
+        insurancepolicy: Страховой полис
+        typeoftreatment: Тип лечения
+        dateofcreation: Дата создания
+        pindex: Индекс
+        city: Город
+        street: Улица
+        house: Дом
+        building: Строение
+        flat: Квартира
+        telephone: Телефон
+        passportseries: Серия паспорта
+        passportnumber: Номер паспорта
+        passsportfrom: Кем выдан
+        passportwhen: Когда выдан
+        allergy: Аллергии
+      ward:
+        floor: Этаж
+        nomer: Номер
+        otdel: Отдел
+        capacity: Вместимость
+      period:
+        dateofentrance: Дата поступления
+        reasonofentrance: Причина поступления
+        dateofissue: Дата выписки
+        dischargesummary: Выписной эпикриз
+        card_id: Номер карты
+        ward_id: Номер палаты
       # nested_start
       role_user: &role_users
       # nested_finish

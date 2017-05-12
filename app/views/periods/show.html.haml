@@ -1,24 +1,34 @@
+=breadcrumb_tag do
+  %li
+    = link_to 'Список амб.периодов', periods_path
+  %li.active
+    = t('headers.periods.show')
 %p#notice= notice
 
-%p
-  %b Dateofentrance:
-  = @period.dateofentrance
-%p
-  %b Reasonofentrance:
-  = @period.reasonofentrance
-%p
-  %b Dateofissue:
-  = @period.dateofissue
-%p
-  %b Dischargesummary:
-  = @period.dischargesummary
-%p
-  %b Card:
-  = @period.card
-%p
-  %b Ward:
-  = @period.ward
 
-= link_to 'Edit', edit_period_path(@period)
-\|
-= link_to 'Back', periods_path
+
+%dl
+  %dt= Period.human_attribute_name(:dateofentrance)
+  %dd= @period.dateofentrance
+  
+  %dt= Period.human_attribute_name(:reasonofentrance)
+  %dd= @period.reasonofentrance
+  
+  %dt= Period.human_attribute_name(:dateofissue)
+  %dd= @period.dateofissue
+
+  %dt= Period.human_attribute_name(:dischargesummary)
+  %dd= @period.dischargesummary
+  
+  %dt= Period.human_attribute_name(:ward_id)
+  %dd= @period.ward_id
+  
+  %dt= Period.human_attribute_name(:card_id)
+  %dd= @period.card_id
+  
+
+
+= link_to 'Назад', periods_path, class: 'btn btn-primary'
+-if is_admin? || is_operator?
+  \|
+  = link_to 'Редактировать', edit_period_path(@period), class: 'btn btn-primary'

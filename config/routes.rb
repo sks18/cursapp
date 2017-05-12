@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :role_users
   resources :roles
   resources :password_resets
+  resources :wards
+  resources :cards
+  resources :periods
 
   get 'welcome/index', as: :welcome
   get 'welcome/insufficient_privileges', as: :ip

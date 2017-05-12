@@ -1,31 +1,44 @@
-%h1 Listing periods
-
-%table
+=breadcrumb_tag do
+  %li.active
+    Список амб.периодов
+.page-header
+  %h1= t('headers.periods.index') 
+  
+%table.table.table-hover.table-striped
+  %caption
+    - if is_admin? || is_operator?
+      = link_to new_period_path, class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.period')   
   %thead
     %tr
-      %th Dateofentrance
-      %th Reasonofentrance
-      %th Dateofissue
-      %th Dischargesummary
-      %th Card
-      %th Ward
-      %th
-      %th
+      %th= Period.human_attribute_name(:dateofentrance)
+      %th= Period.human_attribute_name(:reasonofentrance)
+      %th= Period.human_attribute_name(:dateofissue)
+      %th= Period.human_attribute_name(:dischargesummary)
+      %th= Period.human_attribute_name(:ward_id)
+      %th= Period.human_attribute_name(:card_id)
       %th
 
   %tbody
     - @periods.each do |period|
       %tr
-        %td= period.dateofentrance
-        %td= period.reasonofentrance
-        %td= period.dateofissue
-        %td= period.dischargesummary
-        %td= period.card
-        %td= period.ward
-        %td= link_to 'Show', period
-        %td= link_to 'Edit', edit_period_path(period)
-        %td= link_to 'Destroy', period, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Period', new_period_path
+        %td.center= period.dateofentrance
+        %td.center= period.reasonofentrance
+        %td.center= period.dateofissue
+        %td.center= period.dischargesummary
+        %td.center= period.ward_id
+        %td.center= period.card_id
+        %td.right
+          = link_to period, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          - if is_admin? || is_operator?  
+            = link_to edit_period_path(period), class: 'btn btn-info' do
+              = fa_icon :edit
+              = t('buttons.edit')
+            = link_to period, :method => :delete, 
+            :data => { :confirm => t('buttons.confirm.period') }, 
+            class: 'btn btn-danger' do
+              = fa_icon :times
+              = t('buttons.destroy')

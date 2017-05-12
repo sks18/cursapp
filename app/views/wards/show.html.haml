@@ -1,18 +1,28 @@
+=breadcrumb_tag do
+  %li
+    = link_to 'Список палат', wards_path
+  %li.active
+    = t('headers.wards.show')
 %p#notice= notice
 
-%p
-  %b Floor:
-  = @ward.floor
-%p
-  %b Nomer:
-  = @ward.nomer
-%p
-  %b Otdel:
-  = @ward.otdel
-%p
-  %b Capacity:
-  = @ward.capacity
 
-= link_to 'Edit', edit_ward_path(@ward)
-\|
-= link_to 'Back', wards_path
+
+%dl
+  %dt= Ward.human_attribute_name(:floor)
+  %dd= @ward.floor
+  
+  %dt= Ward.human_attribute_name(:nomer)
+  %dd= @ward.nomer
+  
+  %dt= Ward.human_attribute_name(:otdel)
+  %dd= @ward.otdel
+
+  %dt= Ward.human_attribute_name(:capacity)
+  %dd= @ward.capacity
+  
+
+
+= link_to 'Назад', wards_path, class: 'btn btn-primary'
+-if is_admin? || is_operator?
+  \|
+  = link_to 'Редактировать', edit_ward_path(@ward), class: 'btn btn-primary'

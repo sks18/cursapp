@@ -1,27 +1,40 @@
-%h1 Listing wards
-
-%table
+=breadcrumb_tag do
+  %li.active
+    Список палат
+.page-header
+  %h1= t('headers.wards.index') 
+  
+%table.table.table-hover.table-striped
+  %caption
+    - if is_admin? || is_operator?
+      = link_to new_ward_path, class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.ward')   
   %thead
     %tr
-      %th Floor
-      %th Nomer
-      %th Otdel
-      %th Capacity
-      %th
-      %th
+      %th= Ward.human_attribute_name(:floor)
+      %th= Ward.human_attribute_name(:nomer)
+      %th= Ward.human_attribute_name(:otdel)
+      %th= Ward.human_attribute_name(:capacity)
       %th
 
   %tbody
     - @wards.each do |ward|
       %tr
-        %td= ward.floor
-        %td= ward.nomer
-        %td= ward.otdel
-        %td= ward.capacity
-        %td= link_to 'Show', ward
-        %td= link_to 'Edit', edit_ward_path(ward)
-        %td= link_to 'Destroy', ward, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Ward', new_ward_path
+        %td.center= ward.floor
+        %td.center= ward.nomer
+        %td.center= ward.otdel
+        %td.center= ward.capacity
+        %td.right
+          = link_to ward, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          - if is_admin? || is_operator?  
+            = link_to edit_ward_path(ward), class: 'btn btn-info' do
+              = fa_icon :edit
+              = t('buttons.edit')
+            = link_to ward, :method => :delete, 
+            :data => { :confirm => t('buttons.confirm.ward') }, 
+            class: 'btn btn-danger' do
+              = fa_icon :times
+              = t('buttons.destroy')
