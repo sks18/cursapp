@@ -17,7 +17,7 @@
       %th= Period.human_attribute_name(:dateofissue)
       %th= Period.human_attribute_name(:dischargesummary)
       %th= Period.human_attribute_name(:ward_id)
-      %th= Period.human_attribute_name(:card_id)
+      %th= Card.human_attribute_name(:lastname)
       %th
 
   %tbody
@@ -28,7 +28,7 @@
         %td.center= period.dateofissue
         %td.center= period.dischargesummary
         %td.center= period.ward_id
-        %td.center= period.card_id
+        %td.center= period.card.lastname
         %td.right
           = link_to period, class: 'btn btn-warning' do
             = fa_icon :eye

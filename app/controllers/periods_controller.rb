@@ -69,6 +69,6 @@ class PeriodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
-      params.require(:period).permit(:dateofentrance, :reasonofentrance, :dateofissue, :dischargesummary, :card_id, :ward_id)
+      params.require(:period).permit(:dateofentrance, :reasonofentrance, :dateofissue, :dischargesummary, :card_id, :ward_id, card_attributes:[:id,:_destroy, :lastname, :firstname, :secondname, :nomer, :insurancepolicy, :typeoftreatment, :dateofcreation, :pindex, :city, :street, :house, :building, :flat, :telephone, :passportseries, :passportnumber, :passsportfrom, :passportwhen, :allergy])
     end
 end

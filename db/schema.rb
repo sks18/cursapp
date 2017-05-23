@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170501085108) do
     t.text     "lastname",        null: false
     t.text     "firstname",       null: false
     t.text     "secondname"
-    t.integer  "nomer"
+    t.integer  "nomer",           null: false
     t.integer  "insurancepolicy"
     t.text     "typeoftreatment", null: false
     t.date     "dateofcreation",  null: false
