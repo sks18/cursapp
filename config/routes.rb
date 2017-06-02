@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :roles
   resources :password_resets
   resources :wards
-  resources :cards
+  resources :cards do
+    collection do
+      get :search
+    end
+  end
+
   resources :periods
 
   get 'welcome/index', as: :welcome

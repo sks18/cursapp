@@ -15,6 +15,7 @@ class PeriodsController < ApplicationController
   # GET /periods/new
   def new
     @period = Period.new
+    @period.build_card
   end
 
   # GET /periods/1/edit
@@ -24,11 +25,29 @@ class PeriodsController < ApplicationController
   # POST /periods
   # POST /periods.json
   def create
-    @period = Period.new(period_params)
-
+	newcard = Card.find_or_create_by(lastname: period_params[:card_attributes][:lastname],
+	                                 firstname: period_params[:card_attributes][:firstname],
+	                                 secondname: period_params[:card_attributes][:secondname],
+	                                 nomer: period_params[:card_attributes][:nomer],
+	                                 insurancepolicy: period_params[:card_attributes][:insurancepolicy],
+	                                 typeoftreatment: period_params[:card_attributes][:typeoftreatment],
+	                                 dateofcreation: period_params[:card_attributes][:dateofcreation],
+	                                 pindex: period_params[:card_attributes][:pindex],
+	                                 city: period_params[:card_attributes][:city],
+	                                 street: period_params[:card_attributes][:street],
+	                                 house: period_params[:card_attributes][:house],
+	                                 building: period_params[:card_attributes][:building],
+	                                 flat: period_params[:card_attributes][:flat],
+	                                 telephone: period_params[:card_attributes][:telephone],
+	                                 passportseries: period_params[:card_attributes][:passportseries],
+	                                 passportnumber: period_params[:card_attributes][:passportnumber],
+	                                 passsportfrom: period_params[:card_attributes][:passsportfrom],
+	                                 passportwhen: period_params[:card_attributes][:passportwhen],
+	                                 allergy: period_params[:card_attributes][:allergy])                            
+    @period = Period.new(ward_id: period_params[:ward_id], card: newcard, dateofentrance: period_params[:dateofentrance], reasonofentrance: period_params[:reasonofentrance], dateofissue: period_params[:dateofissue], dischargesummary: period_params[:dischargesummary])
     respond_to do |format|
       if @period.save
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
+        format.html { redirect_to @period, notice: 'Новая запись была успешно создана.' }
         format.json { render :show, status: :created, location: @period }
       else
         format.html { render :new }

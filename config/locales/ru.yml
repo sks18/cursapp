@@ -25,6 +25,8 @@ ru:
       ward: Новая палата
       card: Новая карта
       period: Новый амбулаторный период
+    search:
+      cards: Начать поиск
   headers:
     users:
       edit: Редактирование пользователя
@@ -44,6 +46,7 @@ ru:
       new: Новая карта
       index: Список карт
       show: Просмотр карты
+      search: Поиск карт
     periods:
       edit: Редактирование амб.периодов
       new: Новый амб.период
@@ -99,7 +102,7 @@ ru:
         allergy: Аллергии
       ward:
         floor: Этаж
-        nomer: Номер
+        nomer: Номер палаты
         otdel: Отдел
         capacity: Вместимость
       period:

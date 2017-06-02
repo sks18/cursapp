@@ -20,8 +20,17 @@
   %dt= Period.human_attribute_name(:dischargesummary)
   %dd= @period.dischargesummary
   
-  %dt= Period.human_attribute_name(:ward_id)
-  %dd= @period.ward_id
+  %dt= Ward.human_attribute_name(:nomer)
+  %dd= @period.ward.nomer
+
+  %dt= Card.human_attribute_name(:lastname)
+  %dd= @period.card.lastname
+
+  %dt= Card.human_attribute_name(:firstname)
+  %dd= @period.card.firstname
+
+  %dt= Card.human_attribute_name(:secondname)
+  %dd= @period.card.secondname
  
   
 

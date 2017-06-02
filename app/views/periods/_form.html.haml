@@ -1,5 +1,7 @@
 = form_for @period do |f|
   = error_messages_for @period
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'
   .row
     .col-md-6
       .form-group
@@ -29,104 +31,14 @@
     .col-md-6
       .form-group
         = f.label :ward_id, {id: 'ward_label'}
-        = f.select :ward_id, Ward.all.map{|x| [x.nomer, x.id]},{include_blank: true},  {class: 'form-control', id: 'ward_select'}
+        = f.select :ward_id, Ward.all.map{|x| [x.nomer,x.id]},{include_blank: true},  {class: 'form-control', id: 'ward_select'}
         = f.error_messages_for(:ward_id)
-    .col-md-6
-      .form-group
-        = f.label :card_id, {id: 'card_label'}
-        = f.select :card_id, Card.all.map{|x| [x.nomer, x.id]},{include_blank: true},  {class: 'form-control', id: 'card_select'}
-        = f.error_messages_for(:card_id)
+  - if @current_role_user.present? and @current_role_user.is_admin?          
+    = f.fields_for(:card) do |f|
+      = f.hidden_field :id
+      = render('periods/card_form', f: f)
+    
    
  
   
 
-  = f.fields_for :card do |f|
-    .row
-      .col-md-6
-        .form-group
-          = f.label :lastname
-          = f.text_area :lastname, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :firstname
-          = f.text_area :firstname, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :secondname
-          = f.text_area :secondname, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :nomer
-          = f.text_area :nomer, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :insurancepolicy
-          = f.text_area :insurancepolicy, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :typeoftreatment
-          = f.select :typeoftreatment, options_for_select(["Платно", "Бесплатно"]), class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :dateofcreation
-          .input-group.date.datepicker
-            = f.text_field(:dateofcreation, value: lnil(f.object.dateofcreation),
-            class: 'form-control')
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-calendar
-      .col-md-6
-        .form-group
-          = f.label :pindex
-          = f.text_area :pindex, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :city
-          = f.text_area :city, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :street
-          = f.text_area :street, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :house
-          = f.text_area :house, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :building
-          = f.text_area :building, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :flat
-          = f.text_area :flat, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :telephone
-          = f.text_area :telephone, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :passportseries
-          = f.text_area :passportseries, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :passportnumber
-          = f.text_area :passportnumber, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :passsportfrom
-          = f.text_area :passsportfrom, class: 'form-control'
-      .col-md-6
-        .form-group
-          = f.label :passportwhen
-          .input-group.date.datepicker
-            = f.text_field(:passportwhen, value: lnil(f.object.passportwhen),
-            class: 'form-control')
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-calendar
-      .col-md-6
-        .form-group
-          = f.label :allergy
-          = f.text_area :allergy, class: 'form-control'
-      
-       
-  .actions.margin-small-top
-    = f.submit nil, class: 'btn btn-primary'

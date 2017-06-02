@@ -2,6 +2,12 @@ module SideBarHelper
   def side_bar_items(ru)
     result = []
     result << {
+      :name => @current_user.blank? ? 'Войти' : @current_user.email,
+      :icon => 'user',
+      :controller => :welcome, 
+      :action => :new
+    }
+    result << {
       :name => 'Администрирование',
       :icon => 'users',
       :children => [
@@ -28,7 +34,12 @@ module SideBarHelper
       {:name => 'Амб.периоды',
        :controller => :periods, :action => :index,
        :icon => 'search',
-       :class => 'long'}
+       :class => 'long'},
+      {:name => "Поиск пациентов",
+       :controller => :cards, :action => :search,
+       :icon => 'search',
+       :class => 'long'
+      }
     ]} 
     result
   end

@@ -1,0 +1,90 @@
+.col-md-12
+  .panel.panel-success
+    .panel-heading
+      Карта пациента
+    .panel.body
+    .row
+      .col-md-6
+        .form-group
+          = f.label :lastname
+          = f.text_area :lastname, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :firstname
+          = f.text_area :firstname, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :secondname
+          = f.text_area :secondname, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :nomer
+          = f.text_area :nomer, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :insurancepolicy
+          = f.text_area :insurancepolicy, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :typeoftreatment
+          = f.select(:typeoftreatment , options_for_select(["Платно","Бесплатно"], @period.card.typeoftreatment),{}, class: 'form-control')
+      .col-md-6
+        .form-group
+          = f.label :dateofcreation
+          .input-group.date.datepicker
+            = f.text_field(:dateofcreation, value: lnil(f.object.dateofcreation),
+            class: 'form-control')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-6
+        .form-group
+          = f.label :pindex
+          = f.text_area :pindex, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :city
+          = f.text_area :city, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :street
+          = f.text_area :street, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :house
+          = f.text_area :house, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :building
+          = f.text_area :building, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :flat
+          = f.text_area :flat, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :telephone
+          = f.text_area :telephone, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :passportseries
+          = f.text_area :passportseries, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :passportnumber
+          = f.text_area :passportnumber, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :passsportfrom
+          = f.text_area :passsportfrom, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label :passportwhen
+          .input-group.date.datepicker
+            = f.text_field(:passportwhen, value: lnil(f.object.passportwhen),
+            class: 'form-control')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-6
+        .form-group
+          = f.label :allergy
+          = f.text_area :allergy, class: 'form-control'

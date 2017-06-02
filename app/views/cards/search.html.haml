@@ -1,0 +1,219 @@
+=breadcrumb_tag do
+  %li
+    Навигация
+  %li
+    Поиск
+
+.row.hidden-sm.hidden-xs
+  .page-header
+    %h1= t('headers.cards.search')
+.row.visible-sm.visible-xs
+  .page-header
+    %h5= t('headers.cards.search')
+
+= form_tag search_cards_path(), method: :get do
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:lastname)
+        = text_field_tag 'search[lastname]', params['search']['lastname'], class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:firstname)
+        = text_field_tag 'search[firstname]', params['search']['firstname'], class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:secondname)
+        = text_field_tag 'search[secondname]', params['search']['secondname'], class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:nomer)
+        = text_field_tag 'search[nomer]', params['search']['nomer'], class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:insurancepolicy)
+        = text_field_tag 'search[insurancepolicy]', params['search']['insurancepolicy'], class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:typeoftreatment)
+        = select_tag('search[typeoftreatment]' , options_for_select(["Платно","Бесплатно"], @old_typeoftreatment), {include_blank: true, class: 'form-control'})
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:dateofcreation)
+        = text_field_tag 'search[dateofcreation]', params['search']['dateofcreation'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:pindex)
+        = text_field_tag 'search[pindex]', params['search']['pindex'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:city)
+        = text_field_tag 'search[city]', params['search']['city'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:street)
+        = text_field_tag 'search[street]', params['search']['street'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:house)
+        = text_field_tag 'search[house]', params['search']['house'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:building)
+        = text_field_tag 'search[building]', params['search']['building'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:flat)
+        = text_field_tag 'search[flat]', params['search']['flat'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:telephone)
+        = text_field_tag 'search[telephone]', params['search']['telephone'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:passportseries)
+        = text_field_tag 'search[passportseries]', params['search']['passportseries'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:passportnumber)
+        = text_field_tag 'search[passportnumber]', params['search']['passportnumber'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:passsportfrom)
+        = text_field_tag 'search[passsportfrom]', params['search']['passsportfrom'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:passportwhen)
+        = text_field_tag 'search[passportwhen]', params['search']['passportwhen'] , class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = Card.human_attribute_name(:allergy)
+        = text_field_tag 'search[allergy]', params['search']['allergy'] , class: 'form-control'
+
+  .form-actions.bottom20
+    = submit_tag t('buttons.search.cards'), class: 'btn btn-primary'
+
+.row.hidden-xs
+  - @cards.each do |s|
+    .col-md-12
+      .list-group
+        .list-group-item
+          = Card.human_attribute_name(:lastname) + ":"
+          = s.lastname.to_s + ", "
+          = Card.human_attribute_name(:firstname) + ":"
+          = s.firstname.to_s.to_s + ", "
+          = Card.human_attribute_name(:secondname) + ":"
+          = s.secondname.to_s + ", "
+          = Card.human_attribute_name(:nomer) + ":"
+          = s.nomer.to_s + ", "
+          = Card.human_attribute_name(:insurancepolicy) + ":"
+          = s.insurancepolicy.to_s + ", "
+          = Card.human_attribute_name(:typeoftreatment) + ":"
+          = s.typeoftreatment.to_s + ", "
+          = Card.human_attribute_name(:dateofcreation) + ":"
+          = s.dateofcreation.to_s + ", "
+          = Card.human_attribute_name(:pindex) + ":"
+          = s.pindex.to_s + ", "
+          = Card.human_attribute_name(:city) + ":"
+          = s.city.to_s + ", "
+          = Card.human_attribute_name(:street) + ":"
+          = s.street.to_s + ", "
+          = Card.human_attribute_name(:house) + ":"
+          = s.house.to_s + ", "
+          = Card.human_attribute_name(:building) + ":"
+          = s.building.to_s + ", "
+          = Card.human_attribute_name(:flat) + ":"
+          = s.flat.to_s + ", "
+          = Card.human_attribute_name(:telephone) + ":"
+          = s.telephone.to_s + ", "
+          = Card.human_attribute_name(:passportseries) + ":"
+          = s.passportseries.to_s + ", "
+          = Card.human_attribute_name(:passportnumber) + ":"
+          = s.passportnumber.to_s + ", "
+          = Card.human_attribute_name(:passsportfrom) + ":"
+          = s.passsportfrom.to_s + ", "
+          = Card.human_attribute_name(:passportwhen) + ":"
+          = s.passportwhen.to_s + ", "
+          = Card.human_attribute_name(:allergy) + ":"
+          = s.allergy.to_s
+      
+.row.visible-xs
+  - @cards.each do |s|
+    .col-md-12
+      .list-group
+        .list-group-item
+          .col-md-6
+            = Card.human_attribute_name(:lastname) + ":"
+            = s.lastname.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:firstname) + ":"
+            = s.firstname.to_s.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:secondname) + ":"
+            = s.secondname.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:nomer) + ":"
+            = s.nomer.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:insurancepolicy) + ":"
+            = s.insurancepolicy.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:typeoftreatment) + ":"
+            = s.typeoftreatment.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:dateofcreation) + ":"
+            = s.dateofcreation.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:pindex) + ":"
+            = s.pindex.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:city) + ":"
+            = s.city.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:street) + ":"
+            = s.street.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:house) + ":"
+            = s.house.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:building) + ":"
+            = s.building.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:flat) + ":"
+            = s.flat.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:telephone) + ":"
+            = s.telephone.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:passportseries) + ":"
+            = s.passportseries.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:passportnumber) + ":"
+            = s.passportnumber.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:passsportfrom) + ":"
+            = s.passsportfrom.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:passportwhen) + ":"
+            = s.passportwhen.to_s + ", "
+          .col-md-6
+            = Card.human_attribute_name(:allergy) + ":"
+            = s.allergy.to_s

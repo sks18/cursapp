@@ -1,11 +1,17 @@
-=breadcrumb_tag do
-  %li
-    = link_to 'Список амб.периодов', periods_path
-  %li.active
-    = t('headers.periods.new')  
-.page-header
-  %h1= t('headers.periods.new')
+- if @current_user.present?
+  =breadcrumb_tag do
+    %li
+      Навигация
+    %li
+      = link_to 'Информация', periods_path
+    %li.active
+      = t('headers.periods.new')
+
+.row.hidden-sm.hidden-xs
+  .page-header
+    %h1= t('headers.periods.new')
+.row.visible-sm.visible-xs
+  .page-header
+    %h5= t('headers.periods.new')
 
 = render 'form'
-%br
-= link_to 'Назад', periods_path, class: 'btn btn-primary'
