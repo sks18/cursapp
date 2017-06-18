@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20170501085108) do
     t.text     "reasonofentrance", null: false
     t.date     "dateofissue",      null: false
     t.text     "dischargesummary", null: false
-    t.integer  "card_id"
-    t.integer  "ward_id"
+    t.integer  "card_id",          null: false
+    t.integer  "ward_id",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
