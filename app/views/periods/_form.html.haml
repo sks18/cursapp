@@ -1,7 +1,6 @@
 = form_for @period do |f|
   = error_messages_for @period
-  .form-actions.bottom20
-    = f.submit nil, class: 'btn btn-primary'
+  
   .row
     .col-md-6
       .form-group
@@ -27,18 +26,30 @@
       .form-group
         = f.label :dischargesummary
         = f.text_area :dischargesummary, class: 'form-control'
-    .row
+  .row
     .col-md-6
       .form-group
         = f.label :ward_id, {id: 'ward_label'}
         = f.select :ward_id, Ward.all.map{|x| [x.nomer,x.id]},{include_blank: true},  {class: 'form-control', id: 'ward_select'}
         = f.error_messages_for(:ward_id)
-  - if @current_role_user.present? and @current_role_user.is_admin?          
-    = f.fields_for(:card) do |f|
-      = f.hidden_field :id
-      = render('periods/card_form', f: f)
-    
+  %h3= "Выберите или создайте нового пациента"
+  .row
+    .col-md-6
+      .form-group
+        = f.label :card_id, 'Пациент'
+        = f.select :card_id, options_for_select(Card.all.map{|x| [x.secondname, x.id]} + (@period.new_record? ? ["- Создание нового -"] : ["- Создание нового -", "- Редактирование -"]), f.object.card_id.nil? ? "- Создание нового -" : f.object.card_id), {include_blank: true}
+            
+  = f.fields_for :card, f.object.card || f.object.build_card do |f|
+    %fieldset#card-fieldset{"data-content" => "#{render "card_form", f: f}"}
+      %div#card-fields
    
- 
+  - if is_admin?
+    %br
+    .form-actions
+      = f.submit 'Сохранить', class: 'btn btn-success', id: 'save'
+  - else
+    %br
+    %h2= "Создавать или изменять записи в базе данных имеет право только администратор"
+%br
   
 

@@ -1,0 +1,38 @@
+I"�(function() {
+  var insert_form, ready, save_form;
+
+  save_form = function() {
+    if ($('#period_card_id').val() === "- Создание нового -") {
+      $('#period_card_id').remove();
+      return $('#period_card_attributes_id').remove();
+    } else if ($('#period_card_id').val() === '- Редактирование -') {
+      return $('#period_card_id').remove();
+    }
+  };
+
+  insert_form = function() {
+    var f;
+    f = $("#card-fieldset").attr("data-content");
+    if ($("#period_card_id").val() === '') {
+      return $("#card-fields").html('Без клиента');
+    } else if ($('#period_card_id').val() === '- Создание нового -') {
+      return $("#card-fields").html(f);
+    } else if ($('#period_card_id').val() === '- Редактирование -') {
+      return $("#card-fields").html(f);
+    } else {
+      return $("#card-fields").html('Выбран существующий пациент');
+    }
+  };
+
+  ready = function() {
+    insert_form();
+    $("#period_card_id").change(function() {
+      return insert_form();
+    });
+    return $('#save').on('click', save_form);
+  };
+
+  $(document).on('turbolinks:load', ready);
+
+}).call(this);
+:ET
